@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		 <link rel="stylesheet" href="style.css">
+		 <link rel="stylesheet" href="sidenav.css">
+		  <!-- Required meta tags -->
+	    
+		 <style>
+		 	.slidecontainer {
+			  width: 100%; /* Width of the outside container */
+			  display:inline-block;
+			}
+			.slider {
+			  -webkit-appearance: none;
+			  width: 100%;
+			  height: 15px;
+			  border-radius: 5px;   
+			  background: #d3d3d3;
+			  outline: none;
+			  opacity: 0.7;
+			  -webkit-transition: .2s;
+			  transition: opacity .2s;
+			}
+
+			.slider::-webkit-slider-thumb {
+			  -webkit-appearance: none;
+			  appearance: none;
+			  width: 25px;
+			  height: 25px;
+			  border-radius: 50%; 
+			  background: #2E86C1;
+			  cursor: pointer;
+			}
+
+			.slider::-moz-range-thumb {
+			  width: 25px;
+			  height: 25px;
+			  border-radius: 50%;
+			  background: #2E86C1;
+			  cursor: pointer;
+			}
+			.output {
+				height: 100px;
+			}
+		</style>
+		<title>Nabbizer</title>
+	</head>
+	<body>
+		<nav>
+				<div class="tab code-tab" id="codenav">
+					<span><img src="cog_18dp_white.png" alt="Settings"/></span>
+				</div>
+
+
+				<div class="sidenav" id="codeDrawer" > 			 
+					 <a href="javascript:void(0)" class="closebtn" onclick="closeCodeNav()">&times;</a>
+					 <div class="help-text">
+					
+						 <div style ="color:#D86BC9; font-weight:500; font-size:25px; text-align: center;">Settings</div>
+						<div class="inputContainer form-inline" style="margin-left:30px; margin-right: 30px">
+							<label for="column">Colums: </label><input class="form-control" id="inputCol" type="number" max="100" value="25" onchange="changeRowCol()"/>
+							<label for="column">Rows: </label><input class="form-control" id="inputRow" type="number" max="100" value="25" onchange="changeRowCol()"/> 
+							<button onclick="api.reset()" class="btn btn-danger">Clear board</button>
+						</div>
+				</div>
+				</div>
+			</nav>
+		<div class="container">
+			<div class="output" >
+				<h1 id="counter" style="display:inline-block">0</h1>
+				<h3 id="colorCode" style="display:inline-block; background-color:#f4d03f; padding:5px 10px; margin-bottom: 3px; border-radius:4px">#f4d03f</h3>
+				
+			</div>
+			<a href="#" class="button btn btn-dark" id="btn-download" download="nabbi-design.png">Download</a>
+			<div class="slidecontainer">
+				  <input type="range" min="10" max="100" value="50" class="slider" id="zoomBar"/>
+			</div>
+			
+
+
+			<canvas id="canvas" style="display:inline-block;"></canvas>
+
+				<div class="chart-content row show-xs">
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama active" style="background-color:#FFFFFF;" onclick="changeColor(this,'#FFFFFF')" data-rgb="255, 255, 255" data-name="Hama H01 White"FFFFFFFF; ></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#FAF0C3;" onclick="changeColor(this,'#FAF0C3')" data-rgb="250, 240, 195" data-name="Hama H02 Cream"; ></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#F5F07D;" onclick="changeColor(this,'#F5F07D')" data-rgb="245, 240, 125" data-name="Hama H43 Pastel Yellow"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+				<div class="js-color Hama" style="background-color:#FFD75A;" onclick="changeColor(this,'#FFD75A')" data-rgb="255, 215, 90" data-name="Hama H03 Yellow"></div>
+			</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#F0695F;" onclick="changeColor(this,'#F0695F')" data-rgb="240, 105, 95" data-name="Hama H04 Orange"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#C84150;" onclick="changeColor(this,'#C84150')" data-rgb="200, 65, 80" data-name="Hama H05 Red"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#F59BAF;" onclick="changeColor(this,'#F59BAF')" data-rgb="245, 155, 175" data-name="Hama H06 Pink"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#785A91;" onclick="changeColor(this,'#785A91')" data-rgb="120, 90, 145" data-name="Hama H07 Purple"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#2355A0;" onclick="changeColor(this,'#2355A0')" data-rgb="35, 85, 160" data-name="Hama H08 Blue"></div>
+		</div>
+	</div>
+	
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#1969B4;" onclick="changeColor(this,'#1969B4')" data-rgb="25, 105, 180" data-name="Hama H09 Light Blue"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#50AAE1;" onclick="changeColor(this,'#50AAE1')" data-rgb="80, 170, 225" data-name="Hama H46 Pastel Blue"	></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#69A0AF;" onclick="changeColor(this,'#69A0AF')" data-rgb="105, 160, 175" data-name="Hama H31 Turquoise"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#237D5F;" onclick="changeColor(this,'#237D5F')" data-rgb="35, 125, 95" data-name=" Hama N16 Green"></div>
+		</div>
+	</div>
+
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#46C3A5;" onclick="changeColor(this,'#46C3A5')" data-rgb="70, 195, 165" data-name="Hama P11 Light Green"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#96E6A0;" onclick="changeColor(this,'#96E6A0')" data-rgb="150, 230, 160" data-name="Hama P61 Kiwi Lime"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#644B50;" onclick="changeColor(this,'#644B50')" data-rgb="100, 75, 80" data-name="Hama H12 Brown"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#91969B;" onclick="changeColor(this,'#91969B')" data-rgb="145, 150, 155" data-name="Hama H17 Grey"FF91969B; ></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#000000;" onclick="changeColor(this,'#000000')" data-rgb="0, 0, 0" data-name="Hama H18 Black"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#AA5550;" onclick="changeColor(this,'#AA5550')" data-rgb="170, 85, 80" data-name="Hama H20 Red Brown"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#BE8264;" onclick="changeColor(this,'#BE8264')" data-rgb="190, 130, 100" data-name="Hama H21 Light Brown"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#AF4B55;" onclick="changeColor(this,'#AF4B55')" data-rgb="175, 75, 85" data-name="Hama H22 Dark Red"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#F0AAA5;" onclick="changeColor(this,'#F0AAA5')" data-rgb="240, 170, 165" data-name="Hama H26 Flesh" ></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#E1B996;" onclick="changeColor(this,'#E1B996')" data-rgb="225, 185, 150" data-name="Hama H27 Beige"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#C35073;" onclick="changeColor(this,'#C35073')" data-rgb="195, 80, 115" data-name="Hama H29 Rapsberry"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#734B55;" onclick="changeColor(this,'#734B55')" data-rgb="115, 75, 85" data-name="Hama H30 Burgrundy"></div>
+		</div>
+	</div>
+
+
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#FF5FC8;" onclick="changeColor(this,'#FF5FC8')" data-rgb="255, 95, 200" data-name="Hama H32 Fuscia"></div>
+		</div>
+	</div>
+
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#FF788C;" onclick="changeColor(this,'#FF788C')" data-rgb="255, 120, 140" data-name="Hama H44 Pastel Coral" ></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#A58CCD;" onclick="changeColor(this,'#A58CCD')" data-rgb="165, 140, 205" data-name="Hama H45 Pastel Purple"></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#E687C8;" onclick="changeColor(this,'#E687C8')" data-rgb="230, 135, 200" data-name="Hama H48 Pastel Pink"	></div>
+		</div>
+	</div>
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#F0AF5F;" onclick="changeColor(this,'#F0AF5F')" data-rgb="240, 175, 95" data-name="Hama H60 Teddy Bear"></div>
+		</div>
+	</div>
+
+	<div class="color-group">
+		<div class="color-block">
+			<div class="js-color Hama" style="background-color:#46555A;" onclick="changeColor(this,'#46555A')" data-rgb="70, 85, 90" data-name="Hama N09 Dark Green"></div>
+		</div>
+	</div>
+
+	
+</div>
+
+
+			<!--div class="chart-content row show-xs">
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f9ebea" onclick="changeColor(this,'#f9ebea')" data-rgb="249, 235, 234" data-hsl="6, 54%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f2d7d5" onclick="changeColor(this,'#f2d7d5')" data-rgb="242, 215, 213" data-hsl="6, 54%, 89%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e6b0aa" onclick="changeColor(this,'#e6b0aa')" data-rgb="230, 176, 170" data-hsl="6, 54%, 78%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d98880" onclick="changeColor(this,'#d98880')" data-rgb="217, 136, 128" data-hsl="6, 54%, 68%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #cd6155" onclick="changeColor(this,'#cd6155')" data-rgb="205, 97, 85" data-hsl="6, 54%, 57%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #c0392b" onclick="changeColor(this,'#c0392b')" data-rgb="192, 57, 43" data-hsl="6, 63%, 46%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a93226" onclick="changeColor(this,'#a93226')" data-rgb="169, 50, 38" data-hsl="6, 63%, 41%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #922b21" onclick="changeColor(this,'#922b21')" data-rgb="146, 43, 33" data-hsl="6, 63%, 35%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7b241c" onclick="changeColor(this,'#7b241c')" data-rgb="123, 36, 28" data-hsl="6, 63%, 29%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #641e16" onclick="changeColor(this,'#641e16')" data-rgb="100, 30, 22" data-hsl="6, 63%, 24%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fdedec" onclick="changeColor(this,'#fdedec')" data-rgb="253, 237, 236" data-hsl="6, 78%, 96%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fadbd8" onclick="changeColor(this,'#fadbd8')" data-rgb="250, 219, 216" data-hsl="6, 78%, 91%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f5b7b1" onclick="changeColor(this,'#f5b7b1')" data-rgb="245, 183, 177" data-hsl="6, 78%, 83%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f1948a" onclick="changeColor(this,'#f1948a')" data-rgb="241, 148, 138" data-hsl="6, 78%, 74%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ec7063" onclick="changeColor(this,'#ec7063')" data-rgb="236, 112, 99" data-hsl="6, 78%, 66%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e74c3c" onclick="changeColor(this,'#e74c3c')" data-rgb="231, 76, 60" data-hsl="6, 78%, 57%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #cb4335" onclick="changeColor(this,'#cb4335')" data-rgb="203, 67, 53" data-hsl="6, 59%, 50%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #b03a2e" onclick="changeColor(this,'#b03a2e')" data-rgb="176, 58, 46" data-hsl="6, 59%, 43%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #943126" onclick="changeColor(this,'#943126')" data-rgb="148, 49, 38" data-hsl="6, 59%, 37%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #78281f" onclick="changeColor(this,'#78281f')" data-rgb="120, 40, 31" data-hsl="6, 59%, 30%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f5eef8" onclick="changeColor(this,'#f5eef8')" data-rgb="245, 238, 248" data-hsl="283, 39%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ebdef0" onclick="changeColor(this,'#ebdef0')" data-rgb="235, 222, 240" data-hsl="283, 39%, 91%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d7bde2" onclick="changeColor(this,'#d7bde2')" data-rgb="215, 189, 226" data-hsl="283, 39%, 81%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #c39bd3" onclick="changeColor(this,'#c39bd3')" data-rgb="195, 155, 211" data-hsl="283, 39%, 72%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #af7ac5" onclick="changeColor(this,'#af7ac5')" data-rgb="175, 122, 197" data-hsl="283, 39%, 63%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #9b59b6" onclick="changeColor(this,'#9b59b6')" data-rgb="155, 89, 182" data-hsl="283, 39%, 53%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #884ea0" onclick="changeColor(this,'#884ea0')" data-rgb="136, 78, 160" data-hsl="283, 34%, 47%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #76448a" onclick="changeColor(this,'#76448a')" data-rgb="118, 68, 138" data-hsl="283, 34%, 40%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #633974" onclick="changeColor(this,'#633974')" data-rgb="99, 57, 116" data-hsl="283, 34%, 34%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #512e5f" onclick="changeColor(this,'#512e5f')" data-rgb="81, 46, 95" data-hsl="283, 34%, 28%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f4ecf7" onclick="changeColor(this,'#f4ecf7')" data-rgb="244, 236, 247" data-hsl="282, 39%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e8daef" onclick="changeColor(this,'#e8daef')" data-rgb="232, 218, 239" data-hsl="282, 39%, 89%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d2b4de" onclick="changeColor(this,'#d2b4de')" data-rgb="210, 180, 222" data-hsl="282, 39%, 79%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #bb8fce" onclick="changeColor(this,'#bb8fce')" data-rgb="187, 143, 206" data-hsl="282, 39%, 68%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a569bd" onclick="changeColor(this,'#a569bd')" data-rgb="165, 105, 189" data-hsl="282, 39%, 58%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #8e44ad" onclick="changeColor(this,'#8e44ad')" data-rgb="142, 68, 173" data-hsl="282, 44%, 47%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7d3c98" onclick="changeColor(this,'#7d3c98')" data-rgb="125, 60, 152" data-hsl="282, 44%, 42%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #6c3483" onclick="changeColor(this,'#6c3483')" data-rgb="108, 52, 131" data-hsl="282, 44%, 36%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #5b2c6f" onclick="changeColor(this,'#5b2c6f')" data-rgb="91, 44, 111" data-hsl="282, 44%, 30%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #4a235a" onclick="changeColor(this,'#4a235a')" data-rgb="74, 35, 90" data-hsl="282, 44%, 25%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #eaf2f8" onclick="changeColor(this,'#eaf2f8')" data-rgb="234, 242, 248" data-hsl="204, 51%, 94%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d4e6f1" onclick="changeColor(this,'#d4e6f1')" data-rgb="212, 230, 241" data-hsl="204, 51%, 89%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a9cce3" onclick="changeColor(this,'#a9cce3')" data-rgb="169, 204, 227" data-hsl="204, 51%, 78%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7fb3d5" onclick="changeColor(this,'#7fb3d5')" data-rgb="127, 179, 213" data-hsl="204, 51%, 67%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #5499c7" onclick="changeColor(this,'#5499c7')" data-rgb="84, 153, 199" data-hsl="204, 51%, 55%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2980b9" onclick="changeColor(this,'#2980b9')" data-rgb="41, 128, 185" data-hsl="204, 64%, 44%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2471a3" onclick="changeColor(this,'#2471a3')" data-rgb="36, 113, 163" data-hsl="204, 64%, 39%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1f618d" onclick="changeColor(this,'#1f618d')" data-rgb="31, 97, 141" data-hsl="204, 64%, 34%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1a5276" onclick="changeColor(this,'#1a5276')" data-rgb="26, 82, 118" data-hsl="204, 64%, 28%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #154360" onclick="changeColor(this,'#154360')" data-rgb="21, 67, 96" data-hsl="204, 64%, 23%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ebf5fb" onclick="changeColor(this,'#ebf5fb')" data-rgb="235, 245, 251" data-hsl="204, 70%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d6eaf8" onclick="changeColor(this,'#d6eaf8')" data-rgb="214, 234, 248" data-hsl="204, 70%, 91%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #aed6f1" onclick="changeColor(this,'#aed6f1')" data-rgb="174, 214, 241" data-hsl="204, 70%, 81%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #85c1e9" onclick="changeColor(this,'#85c1e9')" data-rgb="133, 193, 233" data-hsl="204, 70%, 72%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #5dade2" onclick="changeColor(this,'#5dade2')" data-rgb="93, 173, 226" data-hsl="204, 70%, 63%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #3498db" onclick="changeColor(this,'#3498db')" data-rgb="52, 152, 219" data-hsl="204, 70%, 53%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2e86c1" onclick="changeColor(this,'#2e86c1')" data-rgb="46, 134, 193" data-hsl="204, 62%, 47%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2874a6" onclick="changeColor(this,'#2874a6')" data-rgb="40, 116, 166" data-hsl="204, 62%, 40%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #21618c" onclick="changeColor(this,'#21618c')" data-rgb="33, 97, 140" data-hsl="204, 62%, 34%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1b4f72" onclick="changeColor(this,'#1b4f72')" data-rgb="27, 79, 114" data-hsl="204, 62%, 28%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e8f8f5" onclick="changeColor(this,'#e8f8f5')" data-rgb="232, 248, 245" data-hsl="168, 55%, 94%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d1f2eb" onclick="changeColor(this,'#d1f2eb')" data-rgb="209, 242, 235" data-hsl="168, 55%, 88%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a3e4d7" onclick="changeColor(this,'#a3e4d7')" data-rgb="163, 228, 215" data-hsl="168, 55%, 77%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #76d7c4" onclick="changeColor(this,'#76d7c4')" data-rgb="118, 215, 196" data-hsl="168, 55%, 65%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #48c9b0" onclick="changeColor(this,'#48c9b0')" data-rgb="72, 201, 176" data-hsl="168, 55%, 54%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1abc9c" onclick="changeColor(this,'#1abc9c')" data-rgb="26, 188, 156" data-hsl="168, 76%, 42%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #17a589" onclick="changeColor(this,'#17a589')" data-rgb="23, 165, 137" data-hsl="168, 76%, 37%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #148f77" onclick="changeColor(this,'#148f77')" data-rgb="20, 143, 119" data-hsl="168, 76%, 32%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #117864" onclick="changeColor(this,'#117864')" data-rgb="17, 120, 100" data-hsl="168, 76%, 27%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #0e6251" onclick="changeColor(this,'#0e6251')" data-rgb="14, 98, 81" data-hsl="168, 76%, 22%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e8f6f3" onclick="changeColor(this,'#e8f6f3')" data-rgb="232, 246, 243" data-hsl="168, 42%, 94%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d0ece7" onclick="changeColor(this,'#d0ece7')" data-rgb="208, 236, 231" data-hsl="168, 42%, 87%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a2d9ce" onclick="changeColor(this,'#a2d9ce')" data-rgb="162, 217, 206" data-hsl="168, 42%, 74%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #73c6b6" onclick="changeColor(this,'#73c6b6')" data-rgb="115, 198, 182" data-hsl="168, 42%, 61%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #45b39d" onclick="changeColor(this,'#45b39d')" data-rgb="69, 179, 157" data-hsl="168, 45%, 49%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #16a085" onclick="changeColor(this,'#16a085')" data-rgb="22, 160, 133" data-hsl="168, 76%, 36%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #138d75" onclick="changeColor(this,'#138d75')" data-rgb="19, 141, 117" data-hsl="168, 76%, 31%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #117a65" onclick="changeColor(this,'#117a65')" data-rgb="17, 122, 101" data-hsl="168, 76%, 27%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #0e6655" onclick="changeColor(this,'#0e6655')" data-rgb="14, 102, 85" data-hsl="168, 76%, 23%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #0b5345" onclick="changeColor(this,'#0b5345')" data-rgb="11, 83, 69" data-hsl="168, 76%, 19%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e9f7ef" onclick="changeColor(this,'#e9f7ef')" data-rgb="233, 247, 239" data-hsl="145, 45%, 94%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d4efdf" onclick="changeColor(this,'#d4efdf')" data-rgb="212, 239, 223" data-hsl="145, 45%, 88%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a9dfbf" onclick="changeColor(this,'#a9dfbf')" data-rgb="169, 223, 191" data-hsl="145, 45%, 77%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7dcea0" onclick="changeColor(this,'#7dcea0')" data-rgb="125, 206, 160" data-hsl="145, 45%, 65%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #52be80" onclick="changeColor(this,'#52be80')" data-rgb="82, 190, 128" data-hsl="145, 45%, 53%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #27ae60" onclick="changeColor(this,'#27ae60')" data-rgb="39, 174, 96" data-hsl="145, 63%, 42%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #229954" onclick="changeColor(this,'#229954')" data-rgb="34, 153, 84" data-hsl="145, 63%, 37%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1e8449" onclick="changeColor(this,'#1e8449')" data-rgb="30, 132, 73" data-hsl="145, 63%, 32%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #196f3d" onclick="changeColor(this,'#196f3d')" data-rgb="25, 111, 61" data-hsl="145, 63%, 27%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #145a32" onclick="changeColor(this,'#145a32')" data-rgb="20, 90, 50" data-hsl="145, 63%, 22%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #eafaf1" onclick="changeColor(this,'#eafaf1')" data-rgb="234, 250, 241" data-hsl="145, 61%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d5f5e3" onclick="changeColor(this,'#d5f5e3')" data-rgb="213, 245, 227" data-hsl="145, 61%, 90%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #abebc6" onclick="changeColor(this,'#abebc6')" data-rgb="171, 235, 198" data-hsl="145, 61%, 80%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #82e0aa" onclick="changeColor(this,'#82e0aa')" data-rgb="130, 224, 170" data-hsl="145, 61%, 69%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #58d68d" onclick="changeColor(this,'#58d68d')" data-rgb="88, 214, 141" data-hsl="145, 61%, 59%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2ecc71" onclick="changeColor(this,'#2ecc71')" data-rgb="46, 204, 113" data-hsl="145, 63%, 49%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #28b463" onclick="changeColor(this,'#28b463')" data-rgb="40, 180, 99" data-hsl="145, 63%, 43%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #239b56" onclick="changeColor(this,'#239b56')" data-rgb="35, 155, 86" data-hsl="145, 63%, 37%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1d8348" onclick="changeColor(this,'#1d8348')" data-rgb="29, 131, 72" data-hsl="145, 63%, 31%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #186a3b" onclick="changeColor(this,'#186a3b')" data-rgb="24, 106, 59" data-hsl="145, 63%, 25%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fef9e7" onclick="changeColor(this,'#fef9e7')" data-rgb="254, 249, 231" data-hsl="48, 89%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fcf3cf" onclick="changeColor(this,'#fcf3cf')" data-rgb="252, 243, 207" data-hsl="48, 89%, 90%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f9e79f" onclick="changeColor(this,'#f9e79f')" data-rgb="249, 231, 159" data-hsl="48, 89%, 80%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f7dc6f" onclick="changeColor(this,'#f7dc6f')" data-rgb="247, 220, 111" data-hsl="48, 89%, 70%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color active" style="background-color: #f4d03f" onclick="changeColor(this,'#f4d03f')" data-rgb="244, 208, 63" data-hsl="48, 89%, 60%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f1c40f" onclick="changeColor(this,'#f1c40f')" data-rgb="241, 196, 15" data-hsl="48, 89%, 50%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d4ac0d" onclick="changeColor(this,'#d4ac0d')" data-rgb="212, 172, 13" data-hsl="48, 88%, 44%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #b7950b" onclick="changeColor(this,'#b7950b')" data-rgb="183, 149, 11" data-hsl="48, 88%, 38%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #9a7d0a" onclick="changeColor(this,'#9a7d0a')" data-rgb="154, 125, 10" data-hsl="48, 88%, 32%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7d6608" onclick="changeColor(this,'#7d6608')" data-rgb="125, 102, 8" data-hsl="48, 88%, 26%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fef5e7" onclick="changeColor(this,'#fef5e7')" data-rgb="254, 245, 231" data-hsl="37, 90%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fdebd0" onclick="changeColor(this,'#fdebd0')" data-rgb="253, 235, 208" data-hsl="37, 90%, 90%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fad7a0" onclick="changeColor(this,'#fad7a0')" data-rgb="250, 215, 160" data-hsl="37, 90%, 80%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f8c471" onclick="changeColor(this,'#f8c471')" data-rgb="248, 196, 113" data-hsl="37, 90%, 71%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f5b041" onclick="changeColor(this,'#f5b041')" data-rgb="245, 176, 65" data-hsl="37, 90%, 61%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f39c12" onclick="changeColor(this,'#f39c12')" data-rgb="243, 156, 18" data-hsl="37, 90%, 51%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d68910" onclick="changeColor(this,'#d68910')" data-rgb="214, 137, 16" data-hsl="37, 86%, 45%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #b9770e" onclick="changeColor(this,'#b9770e')" data-rgb="185, 119, 14" data-hsl="37, 86%, 39%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #9c640c" onclick="changeColor(this,'#9c640c')" data-rgb="156, 100, 12" data-hsl="37, 86%, 33%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7e5109" onclick="changeColor(this,'#7e5109')" data-rgb="126, 81, 9" data-hsl="37, 86%, 27%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fdf2e9" onclick="changeColor(this,'#fdf2e9')" data-rgb="253, 242, 233" data-hsl="28, 80%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fae5d3" onclick="changeColor(this,'#fae5d3')" data-rgb="250, 229, 211" data-hsl="28, 80%, 90%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f5cba7" onclick="changeColor(this,'#f5cba7')" data-rgb="245, 203, 167" data-hsl="28, 80%, 81%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f0b27a" onclick="changeColor(this,'#f0b27a')" data-rgb="240, 178, 122" data-hsl="28, 80%, 71%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #eb984e" onclick="changeColor(this,'#eb984e')" data-rgb="235, 152, 78" data-hsl="28, 80%, 61%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e67e22" onclick="changeColor(this,'#e67e22')" data-rgb="230, 126, 34" data-hsl="28, 80%, 52%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ca6f1e" onclick="changeColor(this,'#ca6f1e')" data-rgb="202, 111, 30" data-hsl="28, 74%, 46%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #af601a" onclick="changeColor(this,'#af601a')" data-rgb="175, 96, 26" data-hsl="28, 74%, 39%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #935116" onclick="changeColor(this,'#935116')" data-rgb="147, 81, 22" data-hsl="28, 74%, 33%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #784212" onclick="changeColor(this,'#784212')" data-rgb="120, 66, 18" data-hsl="28, 74%, 27%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fbeee6" onclick="changeColor(this,'#fbeee6')" data-rgb="251, 238, 230" data-hsl="24, 71%, 94%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f6ddcc" onclick="changeColor(this,'#f6ddcc')" data-rgb="246, 221, 204" data-hsl="24, 71%, 88%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #edbb99" onclick="changeColor(this,'#edbb99')" data-rgb="237, 187, 153" data-hsl="24, 71%, 77%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e59866" onclick="changeColor(this,'#e59866')" data-rgb="229, 152, 102" data-hsl="24, 71%, 65%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #dc7633" onclick="changeColor(this,'#dc7633')" data-rgb="220, 118, 51" data-hsl="24, 71%, 53%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d35400" onclick="changeColor(this,'#d35400')" data-rgb="211, 84, 0" data-hsl="24, 100%, 41%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ba4a00" onclick="changeColor(this,'#ba4a00')" data-rgb="186, 74, 0" data-hsl="24, 100%, 36%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a04000" onclick="changeColor(this,'#a04000')" data-rgb="160, 64, 0" data-hsl="24, 100%, 31%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #873600" onclick="changeColor(this,'#873600')" data-rgb="135, 54, 0" data-hsl="24, 100%, 26%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #6e2c00" onclick="changeColor(this,'#6e2c00')" data-rgb="110, 44, 0" data-hsl="24, 100%, 22%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fdfefe" onclick="changeColor(this,'#fdfefe')" data-rgb="253, 254, 254" data-hsl="192, 15%, 99%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #fbfcfc" onclick="changeColor(this,'#fbfcfc')" data-rgb="251, 252, 252" data-hsl="192, 15%, 99%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f7f9f9" onclick="changeColor(this,'#f7f9f9')" data-rgb="247, 249, 249" data-hsl="192, 15%, 97%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f4f6f7" onclick="changeColor(this,'#f4f6f7')" data-rgb="244, 246, 247" data-hsl="192, 15%, 96%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f0f3f4" onclick="changeColor(this,'#f0f3f4')" data-rgb="240, 243, 244" data-hsl="192, 15%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ecf0f1" onclick="changeColor(this,'#ecf0f1')" data-rgb="236, 240, 241" data-hsl="192, 15%, 94%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d0d3d4" onclick="changeColor(this,'#d0d3d4')" data-rgb="208, 211, 212" data-hsl="192, 5%, 82%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #b3b6b7" onclick="changeColor(this,'#b3b6b7')" data-rgb="179, 182, 183" data-hsl="192, 3%, 71%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #979a9a" onclick="changeColor(this,'#979a9a')" data-rgb="151, 154, 154" data-hsl="192, 2%, 60%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7b7d7d" onclick="changeColor(this,'#7b7d7d')" data-rgb="123, 125, 125" data-hsl="192, 1%, 49%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f8f9f9" onclick="changeColor(this,'#f8f9f9')" data-rgb="248, 249, 249" data-hsl="204, 8%, 98%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f2f3f4" onclick="changeColor(this,'#f2f3f4')" data-rgb="242, 243, 244" data-hsl="204, 8%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e5e7e9" onclick="changeColor(this,'#e5e7e9')" data-rgb="229, 231, 233" data-hsl="204, 8%, 90%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d7dbdd" onclick="changeColor(this,'#d7dbdd')" data-rgb="215, 219, 221" data-hsl="204, 8%, 86%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #cacfd2" onclick="changeColor(this,'#cacfd2')" data-rgb="202, 207, 210" data-hsl="204, 8%, 81%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #bdc3c7" onclick="changeColor(this,'#bdc3c7')" data-rgb="189, 195, 199" data-hsl="204, 8%, 76%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #a6acaf" onclick="changeColor(this,'#a6acaf')" data-rgb="166, 172, 175" data-hsl="204, 5%, 67%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #909497" onclick="changeColor(this,'#909497')" data-rgb="144, 148, 151" data-hsl="204, 4%, 58%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #797d7f" onclick="changeColor(this,'#797d7f')" data-rgb="121, 125, 127" data-hsl="204, 3%, 49%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #626567" onclick="changeColor(this,'#626567')" data-rgb="98, 101, 103" data-hsl="204, 3%, 40%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f4f6f6" onclick="changeColor(this,'#f4f6f6')" data-rgb="244, 246, 246" data-hsl="184, 9%, 96%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #eaeded" onclick="changeColor(this,'#eaeded')" data-rgb="234, 237, 237" data-hsl="184, 9%, 92%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d5dbdb" onclick="changeColor(this,'#d5dbdb')" data-rgb="213, 219, 219" data-hsl="184, 9%, 85%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #bfc9ca" onclick="changeColor(this,'#bfc9ca')" data-rgb="191, 201, 202" data-hsl="184, 9%, 77%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #aab7b8" onclick="changeColor(this,'#aab7b8')" data-rgb="170, 183, 184" data-hsl="184, 9%, 69%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #95a5a6" onclick="changeColor(this,'#95a5a6')" data-rgb="149, 165, 166" data-hsl="184, 9%, 62%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #839192" onclick="changeColor(this,'#839192')" data-rgb="131, 145, 146" data-hsl="184, 6%, 54%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #717d7e" onclick="changeColor(this,'#717d7e')" data-rgb="113, 125, 126" data-hsl="184, 5%, 47%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #5f6a6a" onclick="changeColor(this,'#5f6a6a')" data-rgb="95, 106, 106" data-hsl="184, 5%, 40%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #4d5656" onclick="changeColor(this,'#4d5656')" data-rgb="77, 86, 86" data-hsl="184, 5%, 32%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #f2f4f4" onclick="changeColor(this,'#f2f4f4')" data-rgb="242, 244, 244" data-hsl="184, 6%, 95%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #e5e8e8" onclick="changeColor(this,'#e5e8e8')" data-rgb="229, 232, 232" data-hsl="184, 6%, 91%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ccd1d1" onclick="changeColor(this,'#ccd1d1')" data-rgb="204, 209, 209" data-hsl="184, 6%, 81%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #b2babb" onclick="changeColor(this,'#b2babb')" data-rgb="178, 186, 187" data-hsl="184, 6%, 72%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #99a3a4" onclick="changeColor(this,'#99a3a4')" data-rgb="153, 163, 164" data-hsl="184, 6%, 62%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #7f8c8d" onclick="changeColor(this,'#7f8c8d')" data-rgb="127, 140, 141" data-hsl="184, 6%, 53%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #707b7c" onclick="changeColor(this,'#707b7c')" data-rgb="112, 123, 124" data-hsl="184, 5%, 46%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #616a6b" onclick="changeColor(this,'#616a6b')" data-rgb="97, 106, 107" data-hsl="184, 5%, 40%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #515a5a" onclick="changeColor(this,'#515a5a')" data-rgb="81, 90, 90" data-hsl="184, 5%, 34%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #424949" onclick="changeColor(this,'#424949')" data-rgb="66, 73, 73" data-hsl="184, 5%, 27%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #ebedef" onclick="changeColor(this,'#ebedef')" data-rgb="235, 237, 239" data-hsl="210, 12%, 93%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d6dbdf" onclick="changeColor(this,'#d6dbdf')" data-rgb="214, 219, 223" data-hsl="210, 12%, 86%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #aeb6bf" onclick="changeColor(this,'#aeb6bf')" data-rgb="174, 182, 191" data-hsl="210, 12%, 71%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #85929e" onclick="changeColor(this,'#85929e')" data-rgb="133, 146, 158" data-hsl="210, 12%, 57%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #5d6d7e" onclick="changeColor(this,'#5d6d7e')" data-rgb="93, 109, 126" data-hsl="210, 15%, 43%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #34495e" onclick="changeColor(this,'#34495e')" data-rgb="52, 73, 94" data-hsl="210, 29%, 29%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2e4053" onclick="changeColor(this,'#2e4053')" data-rgb="46, 64, 83" data-hsl="210, 29%, 25%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #283747" onclick="changeColor(this,'#283747')" data-rgb="40, 55, 71" data-hsl="210, 29%, 22%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #212f3c" onclick="changeColor(this,'#212f3c')" data-rgb="33, 47, 60" data-hsl="210, 29%, 18%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1b2631" onclick="changeColor(this,'#1b2631')" data-rgb="27, 38, 49" data-hsl="210, 29%, 15%"></div>
+		            </div>
+		        </div>
+		        <div class="color-group">
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #eaecee" onclick="changeColor(this,'#eaecee')" data-rgb="234, 236, 238" data-hsl="210, 9%, 92%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #d5d8dc" onclick="changeColor(this,'#d5d8dc')" data-rgb="213, 216, 220" data-hsl="210, 9%, 85%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #abb2b9" onclick="changeColor(this,'#abb2b9')" data-rgb="171, 178, 185" data-hsl="210, 9%, 70%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #808b96" onclick="changeColor(this,'#808b96')" data-rgb="128, 139, 150" data-hsl="210, 9%, 55%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #566573" onclick="changeColor(this,'#566573')" data-rgb="86, 101, 115" data-hsl="210, 14%, 39%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #2c3e50" onclick="changeColor(this,'#2c3e50')" data-rgb="44, 62, 80" data-hsl="210, 29%, 24%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #273746" onclick="changeColor(this,'#273746')" data-rgb="39, 55, 70" data-hsl="210, 29%, 21%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #212f3d" onclick="changeColor(this,'#212f3d')" data-rgb="33, 47, 61" data-hsl="210, 29%, 18%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #1c2833" onclick="changeColor(this,'#1c2833')" data-rgb="28, 40, 51" data-hsl="210, 29%, 16%"></div>
+		            </div>
+		            <div class="color-block">
+		              <div class="js-color" style="background-color: #17202a" onclick="changeColor(this,'#17202a')" data-rgb="23, 32, 42" data-hsl="210, 29%, 13%"></div>
+		            </div>
+		        </div>
+	    	</div-->
+    	</div>
+    	<script src="https://code.jquery.com/jquery-3.1.1.js"
+		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+		crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="sidenav.js"></script>
+		<script>
+
+
+			var color = "#f4d03f";
+			var defaultStrokeColor = "black";
+
+			var api = {
+				step : 50,
+				pearls : {},
+				numCol : 25,
+				numRow : 25,
+				height : 1000,
+				width : 1000,
+				canvas : {},
+				ctx : {},
+
+				resizeCanvas : function (){
+					this.height = this.numRow * this.step;
+					this.width = this.numCol * this.step;
+					this.canvas.height = this.height;
+					this.canvas.width = this.width;
+				},
+				drawColumns : function (){
+					var currCol = 1;
+					while(currCol < this.numCol){
+						this.ctx.moveTo(currCol * this.step,0);
+						this.ctx.lineTo(currCol * this.step,this.numRow * this.step);
+						this.ctx.stroke();
+						currCol ++;
+					}
+				},
+				drawRows : function (){
+					var currRow = 1;
+					while(currRow < this.numRow){
+						this.ctx.moveTo(0, currRow * this.step);
+						this.ctx.lineTo(this.numCol * this.step, currRow * this.step);
+						this.ctx.stroke();
+						currRow ++;
+					}
+				},
+
+				drawGrid : function (gridColor){
+					
+					this.ctx.strokeStyle = gridColor;
+					this.drawColumns();
+					this.drawRows();
+					this.ctx.strokeStyle = defaultStrokeColor;
+					this.drawBoarder();
+				},
+				drawBoarder : function(){
+
+					this.ctx.strokeStyle = "#000";
+					this.ctx.beginPath();
+					this.ctx.rect(0,0,this.width,this.height);
+					this.ctx.stroke();
+						
+				},
+
+				fromPixToGrid : function(pixelPos){
+					return Math.floor(pixelPos/this.step); //*this.step+ 1/2*this.step;
+				},
+				drawPearl : function (row, column, color){
+					pixCenterX = (column +1/2)*this.step; 
+					pixCenterY = (row +1/2)*this.step; 
+
+					this.ctx.fillStyle = color;
+					this.ctx.beginPath();
+					this.ctx.arc(pixCenterX, pixCenterY, this.step/2-1, 0, 2 * Math.PI);
+					this.ctx.fill();
+					//ctx.stroke();
+
+					this.ctx.fillStyle = "#ddd";
+					this.ctx.beginPath();
+					this.ctx.arc(pixCenterX, pixCenterY,this.step / 9, 0, 2 * Math.PI);
+					this.ctx.fill();
+					//this.ctx.stroke();
+
+					document.getElementById("counter").innerHTML = Object.keys(this.pearls).length;
+				},
+				removePearl : function (row, column){
+					this.ctx.clearRect(column * this.step+1, row  * this.step+1, this.step-2, this.step-2);
+
+					//console.log("rm pearl");
+				},
+				addPearl: function (row, column){
+					//remove pearl if exists
+			        // Collision detection between clicked offset and element.
+			        //console.log(this.pearls);
+			        var key = row+"-"+column;
+			        if(key in this.pearls){
+			        	api.removePearl(this.pearls[key].row, this.pearls[key].column);
+			        }
+
+				   	this.pearls[key] = {
+						color : color,
+						width : this.step,
+						height : this.step,
+						centerX : (column +1/2)*this.step,
+						centerY : (row +1/2)*this.step ,
+						column : column,
+						row : row
+					}
+
+					this.drawPearl(row, column, color);
+				},
+				reset : function (){
+					this.pearls = {};
+					this.clear();
+					this.drawGrid("#bbb");
+				},
+				resize: function(){
+					api.clear(this.ctx);
+					api.resizeCanvas(this.canvas);
+					api.redraw(this.ctx);
+				},
+				clear : function(){
+					this.ctx.clearRect(0,0,this.width,this.height);
+					this.ctx.beginPath();
+				},
+				redraw : function(){
+					this.drawGrid("#bbb");
+					for(var key in this.pearls){
+						var pearl = this.pearls[key];
+						api.drawPearl( pearl.row, pearl.column , pearl.color)
+					}
+				
+				}
+			}
+			
+			api.canvas = document.getElementById("canvas");
+			api.ctx = canvas.getContext("2d");
+
+			api.resizeCanvas();
+			api.drawGrid( "#bbb");
+		
+			var canLeft = canvas.offsetLeft + canvas.clientLeft,
+    		canTop = canvas.offsetTop + canvas.clientTop;
+
+
+			canvas.addEventListener('dblclick', function(event) {
+			    var mousePointX = event.pageX - canLeft,
+					mousePointY = event.pageY - canTop,
+			        collision = false,
+			    	column = api.fromPixToGrid(mousePointX),
+					row = api.fromPixToGrid(mousePointY);
+					var key = row+"-"+column;
+			        if(key in api.pearls){
+			        	var pearl = api.pearls[key];
+			        	delete api.pearls[key]; 
+			        	api.removePearl(pearl.row, pearl.column);
+			        }
+			    
+			}, false);
+
+			var mouseDown = false,
+				lastColumn = 0,
+				lastRow = 0;
+
+			api.canvas.addEventListener('click', function(event) {
+			   var mousePointX = event.pageX - canLeft,
+				    mousePointY = event.pageY - canTop,
+					column = api.fromPixToGrid(mousePointX),
+			    	row = api.fromPixToGrid(mousePointY);
+
+			    api.addPearl(row, column);
+			}, false);
+
+			api.canvas.addEventListener('mousedown',function(event){
+			     mouseDown = true;
+			})
+
+			api.canvas.addEventListener('mouseup',function(event){
+				mouseDown = false;
+			})
+
+			api.canvas.addEventListener("mousemove", function(event){
+				if(mouseDown){
+					var mousePointX = event.pageX - canLeft,
+				    	mousePointY = event.pageY - canTop,
+						column = api.fromPixToGrid(mousePointX),
+			    		row = api.fromPixToGrid(mousePointY);
+
+					if (column == lastColumn && row == lastRow)  {
+						//within the same grid as last, do nothing
+
+					}else {
+						api.addPearl(row, column);
+					}
+
+				 	lastColumn = column;
+				    lastRow = row;
+				}
+			});
+
+
+
+			function changeColor(element, cl){
+				var currColor = document.getElementsByClassName("js-color active");
+					currColor[0].className = "js-color";
+					element.className = "js-color active"
+					color = cl;
+				var colorCodeElement = document.getElementById("colorCode");
+				colorCodeElement.innerHTML = color;
+				colorCodeElement.style.backgroundColor = color;
+			}
+
+
+
+			function changeRowCol(){
+				numRow =  document.getElementById("inputRow").value;
+				numCol =   document.getElementById("inputCol").value;
+				if(numRow*numCol > 5700){
+					alert("Total pearl max is 5000");
+				}else {
+					api.numRow = numRow;
+					api.numCol = numCol;
+					api.resize();
+				}
+				
+			}
+
+			var slider = document.getElementById("zoomBar")
+			
+			slider.oninput = function() {
+			  api.step = this.value;
+			  api.resize();
+			}
+			var button = document.getElementById('btn-download');
+			button.addEventListener('click', function (e) {
+			    var dataURL = api.canvas.toDataURL('image/png');
+			    button.href = dataURL;
+			});
+						
+		</script>
+<!--Artkal colors are in rgb!http://repan.connectionsproject.org/perler-bead-chart/perler-bead-color-chart-bahangit-co.html-->
+	</body>
+</html>

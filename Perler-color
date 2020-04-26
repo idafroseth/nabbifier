@@ -1,0 +1,40 @@
+Order	Manufacturer	Code	Name	R	G	B	Paint.net value
+2	Perler	p18	black	0	0	0	FF000000; Perler P18 Black
+4	Perler	p92	dark grey	95	100	100	FF5F6464; Perler P92 Dark Grey
+6	Perler	p17	grey	150	155	160	FF969BA0; Perler P17 Grey
+9	Perler	p01	white	255	255	255	FFFFFFFF; Perler P01 White
+13	Perler	p03	yellow	255	235	55	FFFFEB37; Perler P03 Yellow
+15	Perler	p56	pastel yellow	245	240	155	FFF5F09B; Perler P56 Pastel Yellow
+18	Perler	p02	cream	240	230	195	FFF0E6C3; Perler P02 Cream
+21	Perler	p57	cheddar	250	200	85	FFFAC855; Perler P57 Cheddar
+23	Perler	p90	butterscotch	240	150	110	FFF0966E; Perler P90 Butterscotch
+27	Perler	p35	tan	205	165	135	FFCDA587; Perler P35 Tan
+35	Perler	p12	brown	110	90	85	FF6E5A55; Perler P12 Brown
+37	Perler	p20	rust	165	90	90	FFA55A5A; Perler P20 Rust
+40	Perler	p21	light brown	160	130	95	FFA0825F; Perler P21 Light Brown
+42	Perler	p88	raspberry	190	70	115	FFBE4673; Perler P88 Raspberry
+46	Perler	p05	red	205	70	90	FFCD465A; Perler P05 Red
+48	Perler	p04	orange	255	115	80	FFFF7350; Perler P04 Orange
+53	Perler	p38	magenta	255	60	130	FFFF3C82; Perler P38 Magenta
+54	Perler	p59	hot coral	255	90	115	FFFF5A73; Perler P59 Hot Coral
+56	Perler	p63	blush	255	150	160	FFFF96A0; Perler P63 Blush
+58	Perler	p33	peach	250	205	195	FFFACDC3; Perler P33 Peach
+61	Perler	p06	bubble gum	240	130	175	FFF082AF; Perler P06 Bubble Gum
+62	Perler	p83	pink	240	95	165	FFF05FA5; Perler P83 Pink
+64	Perler	p55	pastel pink	215	155	200	FFD79BC8; Perler P55 Pastel Pink
+66	Perler	p79	light pink	245	200	230	FFF5C8E6; Perler P79 Light Pink
+67	Perler	p54	pastel lavender	155	135	205	FF9B87CD; Perler P54 Pastel Lavender
+71	Perler	p62	turquoise	5	150	205	FF0596CD; Perler P62 Turquoise
+72	Perler	p70	periwinkle	85	125	185	FF557DB9; Perler P70 Periwinkle
+73	Perler	p09	light blue	45	130	200	FF2D82C8; Perler P09 Light Blue
+77	Perler	p08	dark blue	35	80	145	FF235091; Perler P08 Dark Blue
+78	Perler	p60	plum	175	90	160	FFAF5AA0; Perler P60 Plum
+79	Perler	p07	purple	120	95	155	FF785F9B; Perler P07 Purple
+82	Perler	p52	pastel blue	90	160	205	FF5AA0CD; Perler P52 Pastel Blue
+86	Perler	p58	toothpaste	160	215	225	FFA0D7E1; Perler N30 Olive
+88	Perler	p53	pastel green	135	210	145	FF87D291; Perler H47 Pastel Green
+90	Perler	p61	kiwi lime	125	210	80	FF7DD250; Perler H28 Dark Green
+93	Perler	p10	dark green	40	140	100	FF288C64; Perler H10 Green
+96	Perler	p91	parrot green	0	150	165	FF0096A5; Perler H11 Light Green
+98	Perler	p11	light green	75	195	180	FF4BC3B4; Perler P80 Bright Green
+99	Perler	p80	bright green	115	185	115	FF73B973; Perler N22 Pearl Green
