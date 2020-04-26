@@ -1,164 +1,161 @@
-<div class="chart-content row show-xs">
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#FFFFFF;" onclick="changeColor(this,'#FFFFFF')" data-rgb="255, 255, 255" data-name="Hama H01 White"FFFFFFFF; ></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#FAF0C3;" onclick="changeColor(this,'#FAF0C3')" data-rgb="250, 240, 195" data-name="Hama H02 Cream"; ></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#F5F07D;" onclick="changeColor(this,'#F5F07D')" data-rgb="245, 240, 125" data-name="Hama H43 Pastel Yellow"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-				<div class="js-color Hama" style="background-color:#FFD75A;" onclick="changeColor(this,'#FFD75A')" data-rgb="255, 215, 90" data-name="Hama H03 Yellow"></div>
-			</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#F0695F;" onclick="changeColor(this,'#F0695F')" data-rgb="240, 105, 95" data-name="Hama H04 Orange"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#C84150;" onclick="changeColor(this,'#C84150')" data-rgb="200, 65, 80" data-name="Hama H05 Red"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#F59BAF;" onclick="changeColor(this,'#F59BAF')" data-rgb="245, 155, 175" data-name="Hama H06 Pink"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#785A91;" onclick="changeColor(this,'#785A91')" data-rgb="120, 90, 145" data-name="Hama H07 Purple"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#2355A0;" onclick="changeColor(this,'#2355A0')" data-rgb="35, 85, 160" data-name="Hama H08 Blue"></div>
-		</div>
-	</div>
-	
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#1969B4;" onclick="changeColor(this,'#1969B4')" data-rgb="25, 105, 180" data-name="Hama H09 Light Blue"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#50AAE1;" onclick="changeColor(this,'#50AAE1')" data-rgb="80, 170, 225" data-name="Hama H46 Pastel Blue"	></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#69A0AF;" onclick="changeColor(this,'#69A0AF')" data-rgb="105, 160, 175" data-name="Hama H31 Turquoise"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#237D5F;" onclick="changeColor(this,'#237D5F')" data-rgb="35, 125, 95" data-name=" Hama N16 Green"></div>
-		</div>
-	</div>
-
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#46C3A5;" onclick="changeColor(this,'#46C3A5')" data-rgb="70, 195, 165" data-name="Hama P11 Light Green"></div>
-		</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#96E6A0;" onclick="changeColor(this,'#96E6A0')" data-rgb="150, 230, 160" data-name="Hama P61 Kiwi Lime"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#644B50;" onclick="changeColor(this,'#644B50')" data-rgb="100, 75, 80" data-name="Hama H12 Brown"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#91969B;" onclick="changeColor(this,'#91969B')" data-rgb="145, 150, 155" data-name="Hama H17 Grey"FF91969B; ></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#000000;" onclick="changeColor(this,'#000000')" data-rgb="0, 0, 0" data-name="Hama H18 Black"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#AA5550;" onclick="changeColor(this,'#AA5550')" data-rgb="170, 85, 80" data-name="Hama H20 Red Brown"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#BE8264;" onclick="changeColor(this,'#BE8264')" data-rgb="190, 130, 100" data-name="Hama H21 Light Brown"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#AF4B55;" onclick="changeColor(this,'#AF4B55')" data-rgb="175, 75, 85" data-name="Hama H22 Dark Red"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#F0AAA5;" onclick="changeColor(this,'#F0AAA5')" data-rgb="240, 170, 165" data-name="Hama H26 Flesh" ></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#E1B996;" onclick="changeColor(this,'#E1B996')" data-rgb="225, 185, 150" data-name="Hama H27 Beige"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#C35073;" onclick="changeColor(this,'#C35073')" data-rgb="195, 80, 115" data-name="Hama H29 Rapsberry"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#734B55;" onclick="changeColor(this,'#734B55')" data-rgb="115, 75, 85" data-name="Hama H30 Burgrundy"></div>
-		</div>
-	</div>
-
-
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#FF5FC8;" onclick="changeColor(this,'#FF5FC8')" data-rgb="255, 95, 200" data-name="Hama H32 Fuscia"></div>
-		</div>
-	</div>
-
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#FF788C;" onclick="changeColor(this,'#FF788C')" data-rgb="255, 120, 140" data-name="Hama H44 Pastel Coral" ></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#A58CCD;" onclick="changeColor(this,'#A58CCD')" data-rgb="165, 140, 205" data-name="Hama H45 Pastel Purple"></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#E687C8;" onclick="changeColor(this,'#E687C8')" data-rgb="230, 135, 200" data-name="Hama H48 Pastel Pink"	></div>
-		</div>
-	</div>
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#F0AF5F;" onclick="changeColor(this,'#F0AF5F')" data-rgb="240, 175, 95" data-name="Hama H60 Teddy Bear"></div>
-		</div>
-	</div>
-
-	<div class="color-group">
-		<div class="color-block">
-			<div class="js-color Hama" style="background-color:#46555A;" onclick="changeColor(this,'#46555A')" data-rgb="70, 85, 90" data-name="Hama N09 Dark Green"></div>
-		</div>
-	</div>
-
-	
-</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama active" style="background-color:#FFFFFF;" onclick="changeColor(this,'#FFFFFF')" data-rgb="255, 255, 255" data-name="Hama H01 White"FFFFFFFF; ></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#FAF0C3;" onclick="changeColor(this,'#FAF0C3')" data-rgb="250, 240, 195" data-name="Hama H02 Cream"; ></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#F5F07D;" onclick="changeColor(this,'#F5F07D')" data-rgb="245, 240, 125" data-name="Hama H43 Pastel Yellow"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+									<div class="js-color Hama" style="background-color:#FFD75A;" onclick="changeColor(this,'#FFD75A')" data-rgb="255, 215, 90" data-name="Hama H03 Yellow"></div>
+								</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#F0695F;" onclick="changeColor(this,'#F0695F')" data-rgb="240, 105, 95" data-name="Hama H04 Orange"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#C84150;" onclick="changeColor(this,'#C84150')" data-rgb="200, 65, 80" data-name="Hama H05 Red"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#F59BAF;" onclick="changeColor(this,'#F59BAF')" data-rgb="245, 155, 175" data-name="Hama H06 Pink"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#785A91;" onclick="changeColor(this,'#785A91')" data-rgb="120, 90, 145" data-name="Hama H07 Purple"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#2355A0;" onclick="changeColor(this,'#2355A0')" data-rgb="35, 85, 160" data-name="Hama H08 Blue"></div>
+							</div>
+						</div>
+						
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#1969B4;" onclick="changeColor(this,'#1969B4')" data-rgb="25, 105, 180" data-name="Hama H09 Light Blue"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#50AAE1;" onclick="changeColor(this,'#50AAE1')" data-rgb="80, 170, 225" data-name="Hama H46 Pastel Blue"	></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#69A0AF;" onclick="changeColor(this,'#69A0AF')" data-rgb="105, 160, 175" data-name="Hama H31 Turquoise"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#237D5F;" onclick="changeColor(this,'#237D5F')" data-rgb="35, 125, 95" data-name=" Hama N16 Green"></div>
+							</div>
+						</div>
+					
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#46C3A5;" onclick="changeColor(this,'#46C3A5')" data-rgb="70, 195, 165" data-name="Hama P11 Light Green"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#96E6A0;" onclick="changeColor(this,'#96E6A0')" data-rgb="150, 230, 160" data-name="Hama P61 Kiwi Lime"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#644B50;" onclick="changeColor(this,'#644B50')" data-rgb="100, 75, 80" data-name="Hama H12 Brown"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#91969B;" onclick="changeColor(this,'#91969B')" data-rgb="145, 150, 155" data-name="Hama H17 Grey"FF91969B; ></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#000000;" onclick="changeColor(this,'#000000')" data-rgb="0, 0, 0" data-name="Hama H18 Black"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#AA5550;" onclick="changeColor(this,'#AA5550')" data-rgb="170, 85, 80" data-name="Hama H20 Red Brown"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#BE8264;" onclick="changeColor(this,'#BE8264')" data-rgb="190, 130, 100" data-name="Hama H21 Light Brown"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#AF4B55;" onclick="changeColor(this,'#AF4B55')" data-rgb="175, 75, 85" data-name="Hama H22 Dark Red"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#F0AAA5;" onclick="changeColor(this,'#F0AAA5')" data-rgb="240, 170, 165" data-name="Hama H26 Flesh" ></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#E1B996;" onclick="changeColor(this,'#E1B996')" data-rgb="225, 185, 150" data-name="Hama H27 Beige"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#C35073;" onclick="changeColor(this,'#C35073')" data-rgb="195, 80, 115" data-name="Hama H29 Rapsberry"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#734B55;" onclick="changeColor(this,'#734B55')" data-rgb="115, 75, 85" data-name="Hama H30 Burgrundy"></div>
+							</div>
+						</div>
+					
+					
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#FF5FC8;" onclick="changeColor(this,'#FF5FC8')" data-rgb="255, 95, 200" data-name="Hama H32 Fuscia"></div>
+							</div>
+						</div>
+					
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#FF788C;" onclick="changeColor(this,'#FF788C')" data-rgb="255, 120, 140" data-name="Hama H44 Pastel Coral" ></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#A58CCD;" onclick="changeColor(this,'#A58CCD')" data-rgb="165, 140, 205" data-name="Hama H45 Pastel Purple"></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#E687C8;" onclick="changeColor(this,'#E687C8')" data-rgb="230, 135, 200" data-name="Hama H48 Pastel Pink"	></div>
+							</div>
+						</div>
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#F0AF5F;" onclick="changeColor(this,'#F0AF5F')" data-rgb="240, 175, 95" data-name="Hama H60 Teddy Bear"></div>
+							</div>
+						</div>
+					
+						<div class="color-group">
+							<div class="color-block">
+								<div class="js-color Hama" style="background-color:#46555A;" onclick="changeColor(this,'#46555A')" data-rgb="70, 85, 90" data-name="Hama N09 Dark Green"></div>
+							</div>
+						</div>
